@@ -10,7 +10,7 @@ import org.apache.shiro.util.Factory;
 
 public class ShiroTest {
     public static void main(String[] args) {
-        Factory<SecurityManager> factory = new IniSecurityManagerFactory("classpath:shiro.ini");
+        Factory<SecurityManager> factory = new IniSecurityManagerFactory("classpath:shiro-mysql.ini");
         //初始化
         SecurityManager securityManager = factory.getInstance();
         //用SecurityUtils来获取上下文
@@ -18,7 +18,7 @@ public class ShiroTest {
         //得到与当前系统交互的Subject对象
         Subject subject = SecurityUtils.getSubject();
         //登录  得到用户名密码票据对象
-        UsernamePasswordToken token = new UsernamePasswordToken("test","000000");
+        UsernamePasswordToken token = new UsernamePasswordToken("admin@jamie.com","admin");
         try {
             //是否验证过
             subject.login(token);
